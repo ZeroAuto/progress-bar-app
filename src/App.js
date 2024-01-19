@@ -6,6 +6,13 @@ import ProgressBar from './ProgressBar.js'
 const App = () => {
   const [progressBars, setProgressBars] = useState([true]);
 
+  const addProgressBar = () => {
+    setProgressBars([
+      ...progressBars,
+      true,
+    ]);
+  }
+
   return (
     <div className="App">
       {progressBars.map((bar, index) =>
@@ -13,12 +20,7 @@ const App = () => {
           <ProgressBar key={index} active={bar} />
         </div>
       )}
-      <button onClick={() => {
-        setProgressBars([
-          ...progressBars,
-          true,
-        ])
-      }}>Add Progress Bar</button>
+      <button onClick={addProgressBar}>Add Progress Bar</button>
     </div>
   );
 }
