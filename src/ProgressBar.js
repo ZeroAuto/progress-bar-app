@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const ProgressBar = ({active}) => {
+const ProgressBar = ({active, index, completeEvent}) => {
   const [totalProgress, setTotalProgress] = useState(0);
 
   useEffect(() => {
@@ -10,6 +10,7 @@ const ProgressBar = ({active}) => {
           if (prevTotal < 100) {
             return prevTotal + 1;
           } else {
+            completeEvent(index);
             clearInterval(progressInterval);
             return prevTotal;
           }

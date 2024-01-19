@@ -13,11 +13,20 @@ const App = () => {
     ]);
   }
 
+  const handleCompleteEvent = (progressBarIndex) => {
+    console.log(`index completed ${progressBarIndex}`);
+  }
+
   return (
     <div className="App">
       {progressBars.map((bar, index) =>
         <div className="progress-bar-container">
-          <ProgressBar key={index} active={bar} />
+          <ProgressBar
+            key={index}
+            active={bar}
+            index={index}
+            completeEvent={handleCompleteEvent}
+          />
         </div>
       )}
       <button onClick={addProgressBar}>Add Progress Bar</button>
