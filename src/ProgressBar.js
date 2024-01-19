@@ -8,13 +8,13 @@ const ProgressBar = ({active}) => {
       const progressInterval = setInterval(() => {
         setTotalProgress((prevTotal) => {
           if (prevTotal < 100) {
-            return prevTotal + 5;
+            return prevTotal + 1;
           } else {
             clearInterval(progressInterval);
             return prevTotal;
           }
         })
-      }, 250);
+      }, 50);
 
       return () => clearInterval(progressInterval);
     }
@@ -22,8 +22,7 @@ const ProgressBar = ({active}) => {
 
   return (
     <div>
-      <p>Progress: {totalProgress}</p>
-      <div className="progress-bar-container">
+      <div className="progress-bar">
         <div style={{ width: `${totalProgress}%`, height: '20px', backgroundColor: 'lightblue' }}></div>
       </div>
     </div>

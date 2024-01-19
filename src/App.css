@@ -3,5 +3,9 @@
 }
 
 .progress-bar-container {
+  padding-top: 5px;
+}
+
+.progress-bar {
   width: 200px;
 }
