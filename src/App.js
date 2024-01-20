@@ -1,31 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './App.css';
 import ProgressBar from './ProgressBar.js'
 
 const App = () => {
-  const [progressBars, setProgressBars] = useState([true]);
+  const [progressBars, setProgressBars] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const addProgressBar = () => {
+    const newIndex = 
     setProgressBars([
       ...progressBars,
-      true,
+      progressBars.length,
     ]);
   }
 
   const handleCompleteEvent = (progressBarIndex) => {
-    console.log(`index completed ${progressBarIndex}`);
+    setActiveIndex(progressBarIndex + 1);
   }
 
   return (
     <div className="App">
-      {progressBars.map((bar, index) =>
-        <div className="progress-bar-container">
+      {progressBars.map(idx =>
+        <div
+          key={idx}
+          className="progress-bar-container"
+        >
           <ProgressBar
-            key={index}
-            active={bar}
-            index={index}
+            activeIndex={activeIndex}
             completeEvent={handleCompleteEvent}
+            idx={idx}
           />
         </div>
       )}

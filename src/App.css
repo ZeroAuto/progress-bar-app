@@ -7,5 +7,6 @@
 }
 
 .progress-bar {
+  display: flex;
   width: 200px;
 }

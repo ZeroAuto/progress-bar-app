@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-const ProgressBar = ({active, index, completeEvent}) => {
+const ProgressBar = ({activeIndex, completeEvent, idx}) => {
   const [totalProgress, setTotalProgress] = useState(0);
 
   useEffect(() => {
-    if (active) {
+    if (activeIndex === idx) {
       const progressInterval = setInterval(() => {
         setTotalProgress((prevTotal) => {
           if (prevTotal < 100) {
             return prevTotal + 1;
           } else {
-            completeEvent(index);
+            completeEvent(idx);
             clearInterval(progressInterval);
             return prevTotal;
           }
@@ -19,12 +19,13 @@ const ProgressBar = ({active, index, completeEvent}) => {
 
       return () => clearInterval(progressInterval);
     }
-  }, [active]);
+  }, [activeIndex]);
 
   return (
     <div>
       <div className="progress-bar">
         <div style={{ width: `${totalProgress}%`, height: '20px', backgroundColor: 'lightblue' }}></div>
+        <div style={{ width: `${100 - totalProgress}%`, height: '20px', backgroundColor: 'pink'}}></div>
       </div>
     </div>
   );
