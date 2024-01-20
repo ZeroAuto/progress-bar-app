@@ -4,32 +4,28 @@ import './App.css';
 import ProgressBar from './ProgressBar.js'
 
 const App = () => {
-  const [progressBars, setProgressBars] = useState([]);
+  const [progressBarIndices, setProgressBarIndices] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const addProgressBar = () => {
     const newIndex = 
-    setProgressBars([
-      ...progressBars,
-      progressBars.length,
+    setProgressBarIndices([
+      ...progressBarIndices,
+      progressBarIndices.length,
     ]);
-  }
-
-  const handleCompleteEvent = (progressBarIndex) => {
-    setActiveIndex(progressBarIndex + 1);
   }
 
   return (
     <div className="App">
-      {progressBars.map(idx =>
+      {progressBarIndices.map(idx =>
         <div
           key={idx}
           className="progress-bar-container"
         >
           <ProgressBar
             activeIndex={activeIndex}
-            completeEvent={handleCompleteEvent}
             idx={idx}
+            setActiveIndex={setActiveIndex}
           />
         </div>
       )}
