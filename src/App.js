@@ -24,24 +24,29 @@ const App = () => {
   }
 
   return (
-    <div className="App">
-      {progressBarIndices.map(idx =>
-        <div
-          key={idx}
-          className="progress-bar-container"
-        >
-          {/* 
-            I know that using index for the key isn't the best practice but since deleting
-            elements wasn't part of the requirements I think it's fine here
-          */}
-          <ProgressBar
-            activeIndex={activeIndex}
-            completeEvent={handleCompleteEvent}
-            idx={idx}
-          />
+    <div className="container mx-auto py-8">
+      <div className="max-w-md mx-auto">
+        <div className="space-y-4">
+          {progressBarIndices.map(idx =>
+            <div
+              key={idx}
+              className="flex-items-center"
+            >
+              <ProgressBar
+                activeIndex={activeIndex}
+                completeEvent={handleCompleteEvent}
+                idx={idx}
+              />
+            </div>
+          )}
         </div>
-      )}
-      <button onClick={addProgressBar}>Add Progress Bar</button>
+        <div className="flex justify-start mt-4">
+          <button
+            className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            onClick={addProgressBar}
+          >Add Progress Bar</button>
+        </div>
+      </div>
     </div>
   );
 }

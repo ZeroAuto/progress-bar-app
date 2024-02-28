@@ -22,11 +22,11 @@ const ProgressBar = ({activeIndex, completeEvent, idx}) => {
   }, [activeIndex]);
 
   return (
-    <div>
-      <div className="progress-bar">
-        <div style={{ width: `${totalProgress}%`, height: '20px', backgroundColor: 'lightblue' }}></div>
-        <div style={{ width: `${100 - totalProgress}%`, height: '20px', backgroundColor: 'pink'}}></div>
-      </div>
+    <div className="w-full bg-pink-300 h-4 rounded-full">
+      <div
+        className="bg-blue-400 h-full rounded-full"
+        style={{ width: `${totalProgress}%`}}
+      />
     </div>
   );
 };
